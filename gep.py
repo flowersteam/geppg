@@ -5,12 +5,14 @@ import numpy as np
 import gym
 import pickle
 import argparse
-
+from DDPG_baseline_v2.baselines.ddpg.main_config import run_ddpg
+from DDPG_baseline_v2.baselines.ddpg.configs.config import ddpg_config
 from controllers import NNController
 from representers import CheetahRepresenter
 from inverse_models import KNNRegressor
 from gep_utils import *
 from configs import *
+
 
 saving_folder = './results/'
 trial_id = 1
@@ -137,8 +139,7 @@ def run_experiment(env_id, trial, noise_type, study, nb_exploration, saving_fold
 
     if 'PG' in study:
 
-        from DDPG_baseline_v2.baselines.ddpg.main_config import run_ddpg
-        from DDPG_baseline_v2.baselines.ddpg.configs.config import ddpg_config
+
 
         # load ddpg config
         dict_args = ddpg_config(env_id=env_id,
